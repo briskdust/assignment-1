@@ -1,7 +1,8 @@
 version: '3'
 services:
   student_service:
-    image: 78a889a684389c0b544c08c70a1bb77dd4c5d5f4f4fecc17fd8755129273fcd1
+    build: .
+    image: briskdust/student_service
     restart: unless-stopped
     depends_on:
       - mongo
