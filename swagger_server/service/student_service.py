@@ -20,8 +20,8 @@ def get_by_id(student_id=None, subject=None):
     student = collection.find_one({'_id': ObjectId(student_id)})
     if not student:
         return 'not found', 404
-    student['student_id'] = str(student['_id'])
-    del student['_id']  # Optional: remove the MongoDB specific _id if you want
+    # student['student_id'] = str(student['_id'])
+    # del student['_id']
     print(student)
     return student
 
