@@ -12,16 +12,16 @@ def add(student=None):
     if collection.find_one({'first_name': student.first_name, 'last_name': student.last_name}):
         return 'already exists', 409
 
-    student_id = collection.insert_one(student.to_dict()).inserted_id
+    collection.insert_one(student.to_dict())
+    student_id = student.student_id
     return str(student_id)
 
 
 def get_by_id(student_id=None, subject=None):
-    student = collection.find_one({'_id': ObjectId(student_id)})
+    student = collection.find_one({'student_id': student_id})
     if not student:
         return 'not found', 404
-    # student['student_id'] = str(student['_id'])
-    # del student['_id']
+    del student['_id']
     print(student)
     return student
 
